@@ -10,6 +10,13 @@ class MarsRover(private val x: Int, private val y: Int, private val orientation:
         when (command) {
             Command.L -> turnLeft()
             Command.R -> turnRight()
+            Command.M -> move()
+        }
+
+    private fun move(): Position =
+        when (orientation) {
+            Direction.N -> Position(x, y + 1, Direction.N)
+            else -> Position(x, y, orientation)
         }
 
     private fun turnRight(): Position = when (orientation) {
