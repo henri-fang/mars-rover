@@ -9,16 +9,16 @@ class MarsRoverSpec : ShouldSpec({
     }
 
     should("return the right-hand side of mars rover's orientation when it receive R") {
-        MarsRover(0, 0, "N").execute("R") shouldBe Position(0, 0, "E")
-        MarsRover(0, 0, "E").execute("R") shouldBe Position(0, 0, "S")
-        MarsRover(0, 0, "S").execute("R") shouldBe Position(0, 0, "W")
-        MarsRover(0, 0, "W").execute("R") shouldBe Position(0, 0, "N")
+        MarsRover(0, 0, "N").execute(Command.R) shouldBe Position(0, 0, "E")
+        MarsRover(0, 0, "E").execute(Command.R) shouldBe Position(0, 0, "S")
+        MarsRover(0, 0, "S").execute(Command.R) shouldBe Position(0, 0, "W")
+        MarsRover(0, 0, "W").execute(Command.R) shouldBe Position(0, 0, "N")
     }
 
     should("return the left-hand side of mars rover's orientation when it receive L") {
-        MarsRover(0, 0, "N").execute("L") shouldBe Position(0, 0, "W")
-        MarsRover(0, 0, "E").execute("L") shouldBe Position(0, 0, "N")
-        MarsRover(0, 0, "S").execute("L") shouldBe Position(0, 0, "E")
-        MarsRover(0, 0, "W").execute("L") shouldBe Position(0, 0, "S")
+        MarsRover(0, 0, "N").execute(Command.L) shouldBe Position(0, 0, "W")
+        MarsRover(0, 0, "E").execute(Command.L) shouldBe Position(0, 0, "N")
+        MarsRover(0, 0, "S").execute(Command.L) shouldBe Position(0, 0, "E")
+        MarsRover(0, 0, "W").execute(Command.L) shouldBe Position(0, 0, "S")
     }
 })

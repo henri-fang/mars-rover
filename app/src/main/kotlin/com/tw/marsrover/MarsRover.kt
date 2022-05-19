@@ -8,11 +8,10 @@ class MarsRover(private val x: Int, private val y: Int, private val orientation:
         return Position(x, y, orientation)
     }
 
-    fun execute(command: String): Position =
+    fun execute(command: Command): Position =
         when (command) {
-            "R" -> turnRight()
-            "L" -> turnLeft()
-            else -> throw IllegalStateException("unsupported command")
+            Command.L -> turnLeft()
+            Command.R -> turnRight()
         }
 
     private fun turnRight(): Position {
