@@ -9,46 +9,29 @@ class MarsRover(private val x: Int, private val y: Int, private val orientation:
     }
 
     fun execute(command: String): Position =
-        if (orientation == "N") {
-            when (command) {
-                "R" -> {
-                    Position(x, y, "E")
-                }
-                "L" -> {
-                    Position(x, y, "W")
-                }
-                else -> Position(x, y, orientation)
-            }
-        } else if (orientation == "E") {
-            when (command) {
-                "R" -> {
-                    Position(x, y, "S")
-                }
-                "L" -> {
-                    Position(x, y, "N")
-                }
-                else -> Position(x, y, orientation)
-            }
-        } else if (orientation == "S") {
-            when (command) {
-                "R" -> {
-                    Position(x, y, "W")
-                }
-                "L" -> {
-                    Position(x, y, "E")
-                }
-                else -> Position(x, y, orientation)
-            }
-        } else if (orientation == "W") {
-            when (command) {
-                "R" -> {
-                    Position(x, y, "N")
-                }
-                "L" -> {
-                    Position(x, y, "S")
-                }
-                else -> Position(x, y, orientation)
-            }
-        } else
-            Position(x, y, orientation)
+        when (command) {
+            "R" -> turnRight()
+            "L" -> turnLeft()
+            else -> throw IllegalStateException("unsupported command")
+        }
+
+    private fun turnRight(): Position {
+        return when (orientation) {
+            "N" -> Position(x, y, "E")
+            "E" -> Position(x, y, "S")
+            "S" -> Position(x, y, "W")
+            "W" -> Position(x, y, "N")
+            else -> throw IllegalStateException("incorrect orientation")
+        }
+    }
+
+    private fun turnLeft(): Position {
+        return when (orientation) {
+            "N" -> Position(x, y, "W")
+            "E" -> Position(x, y, "N")
+            "S" -> Position(x, y, "E")
+            "W" -> Position(x, y, "S")
+            else -> throw IllegalStateException("incorrect orientation")
+        }
+    }
 }
