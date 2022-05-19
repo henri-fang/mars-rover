@@ -1,8 +1,6 @@
 package com.tw.marsrover
 
-import java.lang.IllegalStateException
-
-class MarsRover(private val x: Int, private val y: Int, private val orientation: String) {
+class MarsRover(private val x: Int, private val y: Int, private val orientation: Direction) {
 
     fun position(): Position {
         return Position(x, y, orientation)
@@ -14,23 +12,17 @@ class MarsRover(private val x: Int, private val y: Int, private val orientation:
             Command.R -> turnRight()
         }
 
-    private fun turnRight(): Position {
-        return when (orientation) {
-            "N" -> Position(x, y, "E")
-            "E" -> Position(x, y, "S")
-            "S" -> Position(x, y, "W")
-            "W" -> Position(x, y, "N")
-            else -> throw IllegalStateException("incorrect orientation")
-        }
+    private fun turnRight(): Position = when (orientation) {
+        Direction.N -> Position(x, y, Direction.E)
+        Direction.E -> Position(x, y, Direction.S)
+        Direction.S -> Position(x, y, Direction.W)
+        Direction.W -> Position(x, y, Direction.N)
     }
 
-    private fun turnLeft(): Position {
-        return when (orientation) {
-            "N" -> Position(x, y, "W")
-            "E" -> Position(x, y, "N")
-            "S" -> Position(x, y, "E")
-            "W" -> Position(x, y, "S")
-            else -> throw IllegalStateException("incorrect orientation")
-        }
+    private fun turnLeft(): Position = when (orientation) {
+        Direction.N -> Position(x, y, Direction.W)
+        Direction.E -> Position(x, y, Direction.N)
+        Direction.S -> Position(x, y, Direction.E)
+        Direction.W -> Position(x, y, Direction.S)
     }
 }
