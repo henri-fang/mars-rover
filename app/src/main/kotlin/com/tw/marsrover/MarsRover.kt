@@ -17,6 +17,7 @@ class MarsRover(private val x: Int, private val y: Int, private val orientation:
         when (orientation) {
             Direction.N -> Position(x, y + 1, orientation)
             Direction.S -> Position(x, y - 1, orientation)
+            Direction.E -> Position(x + 1, y, orientation)
             else -> Position(x, y, orientation)
         }
 
