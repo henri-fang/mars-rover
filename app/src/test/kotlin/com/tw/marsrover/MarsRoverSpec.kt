@@ -15,7 +15,10 @@ class MarsRoverSpec : ShouldSpec({
         MarsRover(0, 0, "W").execute("R") shouldBe Position(0, 0, "N")
     }
 
-    should("return the change the orientation to W when mars rover receive L given the position is (0, 0, N)") {
+    should("return the left-hand side of mars rover's orientation when it receive L") {
         MarsRover(0, 0, "N").execute("L") shouldBe Position(0, 0, "W")
+        MarsRover(0, 0, "E").execute("L") shouldBe Position(0, 0, "N")
+        MarsRover(0, 0, "S").execute("L") shouldBe Position(0, 0, "E")
+        MarsRover(0, 0, "W").execute("L") shouldBe Position(0, 0, "S")
     }
 })

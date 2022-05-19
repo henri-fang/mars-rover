@@ -1,5 +1,7 @@
 package com.tw.marsrover
 
+import java.lang.IllegalStateException
+
 class MarsRover(private val x: Int, private val y: Int, private val orientation: String) {
 
     fun position(): Position {
@@ -22,6 +24,9 @@ class MarsRover(private val x: Int, private val y: Int, private val orientation:
                 "R" -> {
                     Position(x, y, "S")
                 }
+                "L" -> {
+                    Position(x, y, "N")
+                }
                 else -> Position(x, y, orientation)
             }
         } else if (orientation == "S") {
@@ -29,12 +34,18 @@ class MarsRover(private val x: Int, private val y: Int, private val orientation:
                 "R" -> {
                     Position(x, y, "W")
                 }
+                "L" -> {
+                    Position(x, y, "E")
+                }
                 else -> Position(x, y, orientation)
             }
         } else if (orientation == "W") {
             when (command) {
                 "R" -> {
                     Position(x, y, "N")
+                }
+                "L" -> {
+                    Position(x, y, "S")
                 }
                 else -> Position(x, y, orientation)
             }
