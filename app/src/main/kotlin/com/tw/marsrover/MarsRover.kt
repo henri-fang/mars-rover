@@ -6,4 +6,12 @@ class MarsRover(private val x: Int, private val y: Int, private val orientation:
         return Position(x, y, orientation)
     }
 
+    fun execute(command: String): Position {
+        if (command == "R"){
+            return Position(x, y, "E")
+        }else{
+            return Position(x, y, orientation)
+        }
+    }
+
 }
