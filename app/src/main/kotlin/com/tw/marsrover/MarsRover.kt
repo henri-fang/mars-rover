@@ -15,7 +15,8 @@ class MarsRover(private val x: Int, private val y: Int, private val orientation:
 
     private fun move(): Position =
         when (orientation) {
-            Direction.N -> Position(x, y + 1, Direction.N)
+            Direction.N -> Position(x, y + 1, orientation)
+            Direction.S -> Position(x, y - 1, orientation)
             else -> Position(x, y, orientation)
         }
 

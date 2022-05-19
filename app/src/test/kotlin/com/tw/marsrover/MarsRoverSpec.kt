@@ -26,4 +26,7 @@ class MarsRoverSpec : ShouldSpec({
         MarsRover(0, 0, Direction.N).execute(Command.M) shouldBe Position(0, 1, Direction.N)
     }
 
+    should("return position 1 step closer on Y co-ordinates when it receive M given mars rover's orientation is South") {
+        MarsRover(0, 1, Direction.S).execute(Command.M) shouldBe Position(0, 0, Direction.S)
+    }
 })
